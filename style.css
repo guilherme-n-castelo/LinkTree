@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Inter:wght@400;700&display=swap');
+
+
+/* =========================================================
+   Parte visual da linkTree
+   ========================================================= */
+
+
+
+/* Definição de variáveis globais */
+:root {
+    --bg-color: #0f172a; /* Azul muito escuro para o fundo geral */
+    --grid-color: rgba(255, 255, 255, 0.05); /* Cor das linhas do blueprint */
+    --accent-color: #1d4ed8; /* Azul escuro (destaque) */
+    --text-main: #e2e8f0; /* Cor principal do texto (quase branco) */
+    --text-muted: #94a3b8; /* Cor secundária para textos menos importantes */
+    --dock-bg: rgba(30, 41, 59, 0.8); /* Fundo do menu flutuante */
+    --font-mono: 'Fira Code', monospace;
+    --font-sans: 'Inter', sans-serif;
+}
+
+/* Defini página e fundo em estilo de grade CAD */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 60px 60px; /* Tamanho dos quadrados do grid */
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Animação da engrenagem girando */
+.gear-bg {
+    position: fixed;
+    top: -100px;
+    right: -100px;
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 400px;
+    animation: spin 40s linear infinite; /* Rotação contínua */
+    z-index: -1;
+    pointer-events: none; /* Impede que a engrenagem bloqueie cliques */
+}
+
+/* Rotação infinita para a engrenagem */
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+/* imagem central */
+#profilePicture {
+    display: block;
+    margin-top: 10vh;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Estilização da foto de perfil principal */
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    border: 3px solid var(--accent-color);
+    box-shadow: 0 0 20px rgba(29, 78, 216, 0.4); /* Brilho azul escuro */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.profile-picture:hover {
+    transform: scale(1.05); /* Pequeno aumento ao passar o mouse */
+}
+
+/* Container dos textos de nome e cargo */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+    margin-top: 1rem;
+}
+
+/* Estilo do nome usando fonte estilo código */
+.name {
+    font-family: var(--font-mono);
+    font-size: 1.0rem;
+    font-weight: 700;
+    margin: 1;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+/* Estilo da profissão/cargo */
+.role {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    margin-top: 0.5rem;
+
+    white-space: normal;       /* Permite a quebra natural de linha no texto */
+    overflow-wrap: break-word; /* Quebra palavras longas que ultrapassem a largura do contêiner */
+    word-break: break-word;    /* Fallback para forçar a quebra de palavras em navegadores antigos */
+}
+
+/* =========================================================
+   POPUP (Estilo visualizador CAD)
+   ========================================================= */
+
+/* Fundo escuro translúcido do popup */
+.overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0; bottom: 0; left: 0; right: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 100;
+    visibility: hidden;
+    opacity: 0;
+    transition: .4s ease-in-out;
+}
+
+/* Caixa principal do popup (design lembrando prancha técnica) */
+.popup-cad {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--accent-color); /* Borda técnica azul */
+    box-shadow: 0 0 30px rgba(29, 78, 216, 0.3);
+    padding: 20px;
+    transform: scale(0.8) translateY(-50px);
+    transition: .4s ease-in-out;
+    border-radius: 8px;
+}
+
+/* Foto dentro do popup */
+.popup-photo img {
+    width: 100%;
+    max-width: 250px;
+    border: 2px solid var(--grid-color);
+    border-radius: 4px;
+}
+
+/* Frase exibida no popup */
+.popup-quote {
+    font-family: var(--font-mono);
+    font-style: italic;
+    color: var(--text-main);
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0.9rem;
+   
+}
+
+/* Botão em formato de 'X' para fechar o popup */
+.popup-close {
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    width: 35px;
+    height: 35px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: var(--text-main);
+    line-height: 35px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: background 0.2s;
+}
+
+.popup-close:hover {
+    background-color: #e2e8f0;
+    color: var(--accent-color);
+}
+
+/* Ativa o popup quando o ID estiver na URL (ex: index.html#popup) */
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Anima a entrada da caixa do popup */
+.overlay:target .popup-cad {
+    transform: scale(1) translateY(0);
+}
+
+/* =========================================================
+   FLOATING DOCK (Menu de botões) (IA)
+   ========================================================= */
+
+/* Posicionamento do container na parte inferior da tela */
+.floating-dock-wrapper {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+}
+
+/* Corpo do menu flutuante (Efeito vidro fosco) */
+.floating-dock {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0.75rem 1rem;
+    background: var(--dock-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo individual de cada botão circular */
+.dock-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transform-origin: bottom;
+}
+
+/* Efeito de aumento (Magnification) ao passar o mouse */
+.dock-item:hover {
+    transform: scale(1.4) translateY(-10px);
+    background: var(--accent-color);
+    color: var(--text-main);
+    z-index: 10;
+}
+
+/* Efeito em cascata: aumenta levemente os botões vizinhos */
+.dock-item:hover + .dock-item,
+.dock-item:has(+ .dock-item:hover) {
+    transform: scale(1.15) translateY(-4px);
+}
+
+/* Tooltip: Rótulo de texto que aparece acima do botão */
+.tooltip {
+    position: absolute;
+    top: -45px;
+    background: var(--text-main);
+    color: var(--bg-color);
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+/* Revela o tooltip ao passar o mouse */
+.dock-item:hover .tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Cria a pequena seta apontando para baixo no tooltip */
+.tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px 5px 0;
+    border-style: solid;
+    border-color: var(--text-main) transparent transparent transparent;
+}

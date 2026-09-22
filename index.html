@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilherme Branco | Linktree Engenharia</title>
+    
+    <!-- Ícone da aba do navegador -->
+    <link rel="icon" href="image.png" type="image/x-icon" />
+    
+    <!-- Biblioteca Font Awesome para carregar os ícones (GitHub, Instagram, etc) -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    
+    <!-- Vincula o arquivo de estilos externo -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Elemento decorativo de fundo: Engrenagem animada -->
+    <i class="fas fa-cog gear-bg"></i>
+
+    <!-- Botão/Imagem de perfil: O href="#popup" aciona a abertura do modal -->
+    <a id="profilePicture" href="#popup">
+        <img class="profile-picture" src="https://avatars.githubusercontent.com/u/331834513?v=4" alt="Profile Picture">
+    </a>
+
+    <!-- Container com as informações de texto abaixo da foto -->
+    <div class="profile-container">
+        <h1 class="name">Guilherme Nauê Medeiros Castelo Branco </h1>
+        <div class="role">&lt; Estudante universitário em engenharia de produção &gt
+ <br>&lt; Técnico em edificações com conhecimento em BIM e automação &gt;</div>
+    </div>
+
+    <!-- Modal (Popup): Fica oculto até que o ID #popup seja chamado na URL -->
+    <div class="overlay" id="popup">
+        <div class="popup-cad">
+            <div class="popup-photo">
+                    <img src="https://avatars.githubusercontent.com/u/331834513?v=4" alt="Profile Picture">
+            </div>
+            <div class="popup-quote">
+                "Inteligência é a capacidade de se adaptar à mudança."
+            </div>
+            <!-- Botão de fechar: Retorna o histórico para sair do estado #popup -->
+            <a class="popup-close" onclick="history.back()">&times;</a>
+        </div>
+    </div>
+
+    <!-- Menu Flutuante (Floating Dock) com os links de contato -->
+    <div class="floating-dock-wrapper">
+        <nav class="floating-dock">
+            
+            <!-- Item do dock: GitHub -->
+            <a href="https://github.com/guilherme-n-castelo" target="_blank" class="dock-item">
+                <span class="tooltip">GitHub</span>
+                <i class="fab fa-github"></i>
+            </a>
+
+            <!-- Item do dock: Instagram -->
+            <a href="https://www.instagram.com/guilhermecastelos/" target="_blank" class="dock-item">
+                <span class="tooltip">Instagram</span>
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <!-- Item do dock: LinkedIn -->
+            <a href="https://www.linkedin.com/in/guilhemedeiros/" target="_blank" class="dock-item">
+                <span class="tooltip">LinkedIn</span>
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <!-- Item do dock: Twitter -->
+            <a href="https://x.com/Guictus_Dev" target="_blank" class="dock-item">
+                <span class="tooltip">Twitter</span>
+                <i class="fab fa-twitter"></i>
+            </a>
+
+            <!-- Item do dock: WhatsApp -->
+            <a href="https://w.app/zt4v9m" target="_blank" class="dock-item">
+                <span class="tooltip">WhatsApp</span>
+                <i class="fab fa-whatsapp"></i>
+            </a>
+
+        </nav>
+    </div>
+
+</body>
+</html>
