@@ -12,7 +12,7 @@ Já pensou em ter um LinkTree gratuita rápido e com um visual de Engenheiro?
 
 Pois é, eu pensei e crie um repositório para isso:
 
-- [Link da LinkTree](https://guilherme-n-castelo.github.io/Linktree-Simples/)
+- [Link da LinkTree](https://guilherme-n-castelo.github.io/LinkTree/)
 
 ## 🤔 Como ter?
 
