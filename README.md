@@ -25,7 +25,7 @@ Code -> Download ZIP.
 
 ## 📝 Licença
 
-Este projeto está sob a licença MIT. Veja o para mais detalhes -> [LICENSE](LICENSE.md) 
+Este projeto está sob a licença MIT. Veja o para mais detalhes -> [LICENSE](LICENSE) 
 
 ---
 
